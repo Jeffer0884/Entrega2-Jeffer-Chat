@@ -1,0 +1,60 @@
+<div class="entry-page">
+  <section class="entry-aside">
+    <div class="entry-brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.1-.6L4 20l1.6-4.6A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8.6 11.5h.01M12.4 11.5h.01M16.2 11.5h.01"/></svg>
+      </span>
+      <span>ChatApp<span class="brand-dot">.</span></span>
+    </div>
+    <div class="entry-pitch">
+      <div class="eyebrow"><span class="mini-dot"></span> TU ESPACIO PARA CONVERSAR</div>
+      <h1>Buenas conversaciones,<br /><span>en un solo lugar.</span></h1>
+      <p>Conecta con otras personas, participa en el chat global y conversa de forma privada cuando quieras.</p>
+      <div class="entry-feature-list">
+        <div><span class="feature-icon">#</span><div><strong>Una sala para todos</strong><small>Mensajes en tiempo real para toda la comunidad.</small></div></div>
+        <div><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><div><strong>Personas conectadas</strong><small>Mira quién está en línea y saluda.</small></div></div>
+        <div><span class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8A8.5 8.5 0 0 1 12.5 20a8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8A8.5 8.5 0 0 1 8.7 3.9a8.38 8.38 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5Z"/></svg></span><div><strong>Privados opcionales</strong><small>Habla directamente con alguien cuando lo necesites.</small></div></div>
+      </div>
+    </div>
+    <div class="entry-aside-footer">Proyecto académico · Express + Handlebars · SSE</div>
+    <div class="entry-decoration" aria-hidden="true"><span>#</span><span>•••</span></div>
+  </section>
+
+  <main class="entry-main">
+    <div class="entry-main-header"><span class="green-dot"></span> Chat de texto en vivo</div>
+    <section class="entry-card" aria-labelledby="welcome-heading">
+      <div class="entry-step">01 / TU PERFIL</div>
+      <h2 id="welcome-heading">Antes de comenzar, <span>preséntate.</span></h2>
+      <p class="entry-subtitle">Solo necesitamos unos datos para que los demás sepan quién eres. No hace falta crear una cuenta.</p>
+      <form id="joinForm" novalidate>
+        <label for="nameInput">Tu nombre <span class="required">*</span></label>
+        <input id="nameInput" name="name" type="text" maxlength="32" minlength="2" autocomplete="nickname" placeholder="Ej. Andrés Gómez" required />
+        <p class="field-hint">Este nombre aparecerá junto a tus mensajes.</p>
+
+        <label for="cityInput">Ciudad <span class="optional">(opcional)</span></label>
+        <input id="cityInput" name="city" type="text" maxlength="36" placeholder="Ej. Florencia, Caquetá" autocomplete="address-level2" />
+
+        <label for="websiteInput">Tu enlace o publicidad <span class="optional">(opcional)</span></label>
+        <input id="websiteInput" name="website" type="url" maxlength="240" inputmode="url" placeholder="https://tusitio.com" />
+        <p class="field-hint">Se mostrará en tu perfil si alguien quiere conocerte.</p>
+
+        <fieldset class="avatar-colors">
+          <legend>Elige el color de tu avatar</legend>
+          <div class="color-options" id="colorOptions">
+            <label><input type="radio" name="color" value="blue" checked/><span class="swatch blue" title="Azul"></span></label>
+            <label><input type="radio" name="color" value="mint"/><span class="swatch mint" title="Verde"></span></label>
+            <label><input type="radio" name="color" value="peach"/><span class="swatch peach" title="Coral"></span></label>
+            <label><input type="radio" name="color" value="lavender"/><span class="swatch lavender" title="Lila"></span></label>
+            <label><input type="radio" name="color" value="yellow"/><span class="swatch yellow" title="Amarillo"></span></label>
+            <label><input type="radio" name="color" value="slate"/><span class="swatch slate" title="Pizarra"></span></label>
+          </div>
+        </fieldset>
+        <p id="joinError" class="form-error" role="alert" hidden></p>
+        <button type="submit" class="primary-action">Entrar al chat global <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="entry-note"><span class="note-icon">i</span> Tus datos se usan solo para identificarte durante la conversación.</div>
+    </section>
+    <p class="entry-copyright">ChatApp © 2026 · Una comunidad, muchas conversaciones.</p>
+  </main>
+</div>
+<script type="module" src="/js/ingresar.js"></script>

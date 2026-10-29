@@ -1,0 +1,96 @@
+<div class="chat-app" id="chatApp">
+  <aside class="app-rail" aria-label="Navegación principal">
+    <a class="rail-brand" href="/" title="ChatApp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5 8 8 0 0 1-3.1-.6L4 20l1.6-4.6A7.5 7.5 0 1 1 20 11.5Z"/><path d="M8.6 11.5h.01M12.4 11.5h.01M16.2 11.5h.01"/></svg>
+      <strong>ChatApp<span>.</span></strong>
+    </a>
+    <div class="rail-caption">ESPACIO</div>
+    <nav class="rail-nav">
+      <button id="navGlobal" type="button" class="rail-button is-active">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 9h16M3 15h16M11 3 7 21M17 3l-4 18"/></svg>
+        <span>Chat global</span><span class="rail-dot"></span>
+      </button>
+      <button id="navUsers" type="button" class="rail-button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span>Usuarios online</span>
+      </button>
+    </nav>
+    <div class="rail-spacer"></div>
+    <div class="rail-footer">
+      <div class="rail-online"><span class="green-dot"></span><span>Conectado</span></div>
+      <button id="navProfile" type="button" class="rail-profile" title="Ver mi perfil">
+        <span class="avatar avatar-blue" id="railAvatar">TU</span>
+        <span class="rail-user"><strong id="railName">Mi perfil</strong><small>Ver mi información</small></span>
+        <span class="rail-profile-dots">···</span>
+      </button>
+    </div>
+  </aside>
+
+  <aside class="chat-sidebar" id="chatSidebar" aria-label="Conversaciones y usuarios">
+    <div class="sidebar-top">
+      <div class="sidebar-title-row"><h2>Conversaciones<span class="tiny-blue-dot">.</span></h2><button class="sidebar-close icon-button" id="sidebarClose" title="Cerrar panel" aria-label="Cerrar panel">×</button></div>
+      <p>Un espacio para hablar con todos.</p>
+      <label class="search-box">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>
+        <input type="search" id="searchUsers" placeholder="Buscar personas..." autocomplete="off" aria-label="Buscar usuarios conectados" />
+      </label>
+    </div>
+    <div class="sidebar-scroll">
+      <div class="sidebar-section-heading"><span>SALA PÚBLICA</span><span class="section-count">01</span></div>
+      <button type="button" class="room-item is-selected" id="globalRoom">
+        <span class="room-symbol">#</span>
+        <span class="room-item-copy"><strong>Chat global</strong><small>Todos conversamos aquí</small></span>
+        <span class="unread-count" id="globalUnread" hidden>0</span>
+      </button>
+      <div class="sidebar-section-heading people-heading"><span>PERSONAS EN LÍNEA</span><span class="section-count" id="onlineCountSmall">0</span></div>
+      <div id="onlineUsers" class="online-users"><p class="sidebar-placeholder">Buscando usuarios...</p></div>
+      <p class="sidebar-people-hint">Selecciona a una persona para iniciar un chat privado. Es opcional.</p>
+    </div>
+    <div class="sidebar-bottom"><span class="green-dot"></span> <span id="sidebarOnlineCount">Conectando...</span></div>
+  </aside>
+  <div class="sidebar-scrim" id="sidebarScrim" hidden></div>
+
+  <main class="conversation-main">
+    <header class="conversation-header">
+      <button type="button" class="menu-toggle icon-button" id="menuToggle" title="Abrir usuarios" aria-label="Abrir panel de usuarios">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <span class="header-icon room-symbol" id="chatHeaderIcon">#</span>
+      <div class="conversation-heading"><h1 id="chatTitle">Chat global</h1><p id="chatSubtitle">Una conversación para todos, en tiempo real.</p></div>
+      <div class="header-spacer"></div>
+      <button id="otherProfileButton" type="button" class="profile-info-button" title="Ver el perfil y enlace de este usuario" hidden>Ver perfil</button>
+      <div class="online-pill" id="onlinePill"><span class="green-dot"></span><span id="headerOnlineCount">Conectando...</span></div>
+    </header>
+    <div id="connectionBanner" class="connection-banner" role="status" hidden>Conexión perdida. Intentando reconectar...</div>
+    <div class="message-viewport" id="messageViewport" aria-label="Mensajes del chat" aria-live="polite" aria-relevant="additions">
+      <div class="messages-inner" id="messagesInner">
+        <div class="empty-chat">
+          <div class="empty-chat-icon">#</div>
+          <h2>Bienvenido al chat global</h2>
+          <p>Este es el punto de encuentro. Escribe algo para comenzar una conversación.</p>
+        </div>
+      </div>
+    </div>
+    <form id="messageForm" class="composer-wrap">
+      <div class="composer-context"><span id="composerHint">Tu mensaje será visible para todas las personas conectadas</span><span id="charCounter">0 / 500</span></div>
+      <div class="composer-row">
+        <input type="text" id="messageInput" maxlength="500" autocomplete="off" placeholder="Escribe algo para todos..." aria-label="Mensaje" required />
+        <button type="submit" class="send-button" id="sendButton" title="Enviar mensaje" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg>
+          <span>Enviar</span>
+        </button>
+      </div>
+      <div class="composer-footnote"><span>Chat de solo texto · Sin llamadas ni archivos</span><span>Presiona <kbd>Enter</kbd> para enviar</span></div>
+    </form>
+  </main>
+</div>
+<dialog id="profileDialog" class="profile-dialog">
+  <div class="dialog-header"><h2 id="dialogTitle">Perfil</h2><button type="button" class="icon-button" id="closeProfile" aria-label="Cerrar perfil">×</button></div>
+  <div class="profile-summary"><span class="avatar avatar-blue profile-avatar" id="dialogAvatar">TU</span><h3 id="dialogName">Tu nombre</h3><span class="profile-online"><span class="green-dot"></span> En línea</span></div>
+  <div class="profile-detail"><small>CIUDAD</small><p id="dialogCity">Sin especificar</p></div>
+  <div class="profile-detail"><small>ENLACE / PUBLICIDAD</small><div id="dialogWebsite">Sin enlace</div></div>
+  <p class="dialog-help" id="dialogHelp">Tus datos son visibles para los demás cuando ven tu perfil. Puedes volver a ingresar para cambiarlos.</p>
+  <button type="button" id="leaveChat" class="leave-button">Salir del chat</button>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<script type="module" src="/js/chat.js"></script>
